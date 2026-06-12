@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>timelessliving.jp ウェブサイト監査レポート（2026-06-12）</title>
+<style>
+  :root{
+    --ink:#2b2b2b; --sub:#6b6b6b; --line:#e3ded6;
+    --bg:#faf8f4; --card:#ffffff;
+    --red:#c0392b; --orange:#d3791f; --yellow:#b08f1d; --blue:#2c6e91; --green:#3a7d44;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
+    line-height:1.95;}
+  .wrap{max-width:880px;margin:0 auto;padding:48px 24px 80px;}
+  header.report{border-bottom:2px solid var(--ink);padding-bottom:24px;margin-bottom:40px;}
+  header.report h1{font-size:1.7rem;margin:0 0 8px;font-weight:600;letter-spacing:.04em;}
+  header.report p{color:var(--sub);margin:0;font-size:.9rem;
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;}
+  h2{font-size:1.25rem;margin:56px 0 16px;padding-left:14px;border-left:5px solid var(--ink);letter-spacing:.05em;}
+  h2.sev-red{border-color:var(--red);}
+  h2.sev-orange{border-color:var(--orange);}
+  h2.sev-yellow{border-color:var(--yellow);}
+  h2.sev-blue{border-color:var(--blue);}
+  h2.sev-green{border-color:var(--green);}
+  h3{font-size:1.02rem;margin:28px 0 8px;font-weight:600;}
+  .issue{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:18px 22px;margin:14px 0;}
+  .issue h3{margin-top:0;}
+  .tag{display:inline-block;font-size:.72rem;padding:2px 10px;border-radius:99px;color:#fff;vertical-align:middle;margin-right:8px;
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;}
+  .tag.red{background:var(--red);} .tag.orange{background:var(--orange);}
+  .tag.yellow{background:var(--yellow);} .tag.blue{background:var(--blue);} .tag.green{background:var(--green);}
+  .term{color:var(--sub);font-size:.86em;}
+  table{width:100%;border-collapse:collapse;margin:18px 0;background:var(--card);font-size:.92rem;
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;}
+  th,td{border:1px solid var(--line);padding:10px 14px;text-align:left;vertical-align:top;}
+  th{background:#f3efe7;font-weight:600;white-space:nowrap;}
+  ul{padding-left:1.4em;} li{margin:6px 0;}
+  .summary{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px 26px;font-size:1.02rem;}
+  .note{color:var(--sub);font-size:.88rem;}
+  strong{font-weight:700;}
+  footer{margin-top:64px;border-top:1px solid var(--line);padding-top:16px;color:var(--sub);font-size:.82rem;
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;}
+  @media print{
+    body{background:#fff;} .wrap{padding:0;}
+    .issue,table,.summary{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="report">
+  <h1>timelessliving.jp ウェブサイト監査レポート</h1>
+  <p>実施日: 2026年6月12日 ｜ 対象: https://www.timelessliving.jp/</p>
+</header>
+
+<h2>総評</h2>
+<div class="summary">
+サイトの世界観・写真・コンテンツの質は高く、ブランドの上質さが際立っている。一方で、サイトを支える裏側の仕組みが古くなっており、<strong>通信の安全対策の不徹底・ブログを動かすソフトの放置・検索エンジン向け情報の不備</strong>という、検索順位とセキュリティに直結する問題が複数確認された。さらにGoogleの速度測定で<strong>スマホでの表示に11秒以上かかる</strong>ことも判明。いずれも、いまのデザインを変えずに直せるものがほとんどである。
+</div>
+
+<h2 class="sev-green">サイトの強み</h2>
+<div class="issue">
+<ul>
+<li>ブランドの立ち位置に合った、清潔感のある上質なデザイン</li>
+<li>実例集の写真が高品質で訴求力が高い</li>
+<li>住所・建設業許可番号・建築士事務所登録・代表者名など会社情報が充実し、信頼感がある</li>
+<li><strong>費用ページに5事例の詳しい費用内訳</strong>（1,084万〜3,500万円、工事内容別）を掲載済み</li>
+<li><strong>よくある質問ページに6問</strong>を掲載済み（漆喰と珪藻土の違いなど、他社にない内容）</li>
+<li>スマホ表示への対応・メニューの動作は問題なし</li>
+<li>パソコンでの表示速度は速い。表示中に画面がガタつくこともない</li>
+</ul>
+</div>
+
+<h2 class="sev-red">🔴 重大（早急に対応すべき）</h2>
+
+<div class="issue">
+<h3><span class="tag red">重大</span>1. 暗号化されていないページが今も表示できてしまう</h3>
+<p>ウェブサイトの通信には、暗号化された安全な方式<span class="term">（https。ブラウザに鍵マークが出るもの）</span>と、暗号化されていない古い方式<span class="term">（http）</span>がある。本来は古い方式でアクセスが来たら安全な方式へ自動転送<span class="term">（郵便の転送届のようなもの）</span>するのが常識だが、このサイトには転送設定がなく、<strong>古い方式のままサイト全体が閲覧できてしまう</strong>。さらに「www有り／無し」の違いも整理されておらず、<strong>同じサイトが4種類の住所で別々に存在している</strong>状態。</p>
+<ul>
+<li>Googleが「同じ内容のサイトが複数ある」と誤解し、検索の評価が分散する</li>
+<li><strong>お問い合わせフォームも暗号化なしで開けてしまう</strong>ため、氏名・住所・電話番号が保護されないまま送信されるおそれがある</li>
+<li>対応: サーバーの設定で、安全な方式の1つの住所（https://www.timelessliving.jp/）へ自動転送するよう統一する</li>
+</ul>
+</div>
+
+<div class="issue">
+<h3><span class="tag red">重大</span>2. ブログを動かすソフトが8年前のまま</h3>
+<p>ブログ「Timeless Things」は WordPress<span class="term">（ブログを動かす世界で最も普及しているソフト）</span>で作られているが、その版が2018年のまま更新されていない。古い版は弱点（セキュリティの穴）が世間に公開されており、<strong>サイトの改ざんや迷惑メール送信の踏み台にされる入口</strong>になりやすい。しかもページ内に「この版を使っています」という情報が表示されており、攻撃する側から古さが丸見えになっている。</p>
+<ul>
+<li>対応: WordPressを最新版に更新する。あるいはブログ更新が2018年で止まっているため、ブログを「動くソフト」から「ただのページ」に変換して固定化する（安全になる）、または閉鎖する判断も選択肢</li>
+</ul>
+</div>
+
+<div class="issue">
+<h3><span class="tag red">重大</span>3. サイト内のリンクが古い方式（http）で書かれている</h3>
+<p>安全な方式でサイトを開いても、ページ内のリンクの多くが古い方式の住所で書かれているため、サイト内を移動しているうちに暗号化されていないページへ戻ってしまう。SNSでシェアされたときに表示されるタイトルや画像の設定<span class="term">（OGPと呼ばれる）</span>も全ページ古い方式の住所のままで、シェア時の表示トラブルの原因になる。</p>
+<ul>
+<li>対応: ページ内のリンクとSNS用設定の住所を一括で書き換える</li>
+</ul>
+</div>
+
+<h2 class="sev-orange">🟠 重要（検索順位に直接影響）</h2>
+
+<div class="issue">
+<h3><span class="tag orange">重要</span>4. 検索エンジン向けの基本ファイルがない</h3>
+<p>次の3つが未設置。いずれも訪問者には見えないが、Googleがサイトを正しく理解するために使うもの。</p>
+<ul>
+<li><strong>正規URLの指定</strong><span class="term">（canonicalタグ。「このページの正式な住所はこれです」とGoogleに伝える札のようなもの）</span> — 問題1の「住所が4種類ある」状態を悪化させている</li>
+<li><strong>サイトマップ</strong><span class="term">（sitemap.xml。全ページの一覧表＝サイトの地図）</span> — ないと、Googleが実例ページなどを漏れなく見つけにくい</li>
+<li><strong>robots.txt</strong><span class="term">（検索エンジンへの案内板）</span></li>
+</ul>
+</div>
+
+<div class="issue">
+<h3><span class="tag orange">重要</span>5. 検索結果に出る「紹介文」が空のページがある</h3>
+<p>Google検索の結果には、ページ名の下に2行ほどの紹介文が表示される。この文章<span class="term">（meta descriptionという設定）</span>が「Timeless Livingの住まい」「リフォームの流れ・費用」「会社概要」などのページで空欄になっており、何が表示されるかGoogle任せになっている。</p>
+</div>
+
+<div class="issue">
+<h3><span class="tag orange">重要</span>6. 各ページに「大見出し」が設定されていない</h3>
+<p>ウェブページには、Googleや読み上げソフトに「このページの主題はこれです」と伝える大見出し<span class="term">（H1と呼ばれる、本でいう章タイトルのようなもの）</span>を1つ置くのが基本。現状は全ページの大見出しがサイト名で、しかも技術的な作りの都合で2回重複している（中身が空の可能性もあり）。「広尾 マンションリノベーション」のような検索されたい言葉が大見出しに入っておらず、もったいない状態。</p>
+</div>
+
+<div class="issue">
+<h3><span class="tag orange">重要</span>7. Google向けの「会社情報カード」がない</h3>
+<p>社名・住所・電話番号・営業エリアなどを、Googleが読み取りやすい決まった形式で書いておく仕組み<span class="term">（構造化データ。Googleに渡すデジタル名刺のようなもの）</span>がある。これを設定すると、検索結果に会社情報が豊かに表示されやすくなり、「目黒区 リノベーション」のような地域名での検索にも有利になるが、現状未設定。</p>
+</div>
+
+<div class="issue">
+<h3><span class="tag orange">重要</span>8. X（旧Twitter）でシェアされたときの表示設定がない</h3>
+<p>Facebook等向けの設定はあるが、X専用の表示設定<span class="term">（Twitter Cardと呼ばれる）</span>がなく、Xでシェアされた際に画像付きのきれいな形で表示されない可能性がある。</p>
+</div>
+
+<div class="issue">
+<h3><span class="tag orange">重要</span>9. ブログ記事の住所がわかりにくい形式</h3>
+<p>ブログ記事の住所が「/things/?p=472」のような記号番号になっている。「/things/vola」のような意味のわかる形式に変えると、検索エンジンにも人にも親切（WordPressの設定で変更可能。問題2の更新と同時に対応推奨）。</p>
+</div>
+
+<h2 class="sev-yellow">🟡 中程度（使いやすさ・品質）</h2>
+
+<div class="issue">
+<h3><span class="tag yellow">中</span>10. 目や手の不自由な方への配慮が不足</h3>
+<p>ウェブには、画面を音声で読み上げるソフト<span class="term">（スクリーンリーダー。視覚障害のある方が使う）</span>やキーボードだけでの操作に対応するための国際的な決まり<span class="term">（WCAGというガイドライン）</span>がある。高齢の顧客層も使う前提で、以下の不足がある。</p>
+<ul>
+<li>「ここから本文です」という目印がなく、読み上げソフトの利用者が毎回メニュー全部を聞かされる</li>
+<li>お問い合わせフォームの入力欄に「これは名前の欄です」といった機械が読める名札が付いていない</li>
+<li>ページ内にメニューの塊が8つあるが区別する名前がなく、読み上げ時に混乱する</li>
+</ul>
+</div>
+
+<div class="issue">
+<h3><span class="tag yellow">中</span>11. トップページがスマホで拡大できない</h3>
+<p>トップページにだけ「指でつまんで拡大する操作を禁止する」設定が入っており、文字や写真を拡大できない。高齢の方には実害があり、Googleのスマホ対応評価にもマイナス。下層ページは正常なので、トップページの設定を1行直すだけでよい。</p>
+</div>
+
+<div class="issue">
+<h3><span class="tag yellow">中</span>12. 誤字と画像の説明文の不備</h3>
+<p>画像には、目の不自由な方への読み上げやGoogleの画像検索に使われる「説明文」<span class="term">（alt属性と呼ばれる、画像に付ける見えないキャプション）</span>を設定できる。</p>
+<ul>
+<li>トップページの写真9枚すべての説明文が「<strong>Timelsss</strong> Living」（sが1つ多い誤字）で、しかも全部同じ文</li>
+<li>ブログの紹介文「紹介する<strong>ブロク</strong>です」→正しくは「ブログ」（2か所）</li>
+<li>実例詳細ページの写真は説明文が空 — Google画像検索からの来訪チャンスを逃している</li>
+</ul>
+</div>
+
+<div class="issue">
+<h3><span class="tag yellow">中</span>13. 実例「有明」ページの設定ミス</h3>
+<p>SNSシェア用の設定に、別の実例「広尾4」の住所と紹介文がそのまま残っている（ページを複製して作った際の直し忘れ）。有明のページをシェアすると広尾4の情報が表示されてしまう。</p>
+</div>
+
+<h2 class="sev-blue">🔵 表示速度（Googleの測定ツールによる実測: 2026-06-12）</h2>
+
+<div class="issue">
+<h3>Googleの採点結果（トップページ・100点満点）</h3>
+<p class="note">Google公式の測定ツール「PageSpeed Insights」による。「ユーザー補助」は障害のある方への配慮、「おすすめの方法」はウェブ制作の基本ルールの採点。</p>
+<table>
+<tr><th></th><th>表示速度</th><th>ユーザー補助</th><th>おすすめの方法</th><th>SEO（検索対策の基本）</th></tr>
+<tr><td><strong>スマホ</strong></td><td><strong style="color:var(--red)">60</strong></td><td>85</td><td>100</td><td>100</td></tr>
+<tr><td><strong>パソコン</strong></td><td>85</td><td>85</td><td>100</td><td>100</td></tr>
+</table>
+<h3>スマホでの表示速度の内訳</h3>
+<table>
+<tr><th>測定項目</th><th>実測値</th><th>評価</th></tr>
+<tr><td>最初に何かが画面に出るまで</td><td>5.0 秒</td><td>遅い（目安1.8秒以下）</td></tr>
+<tr><td>メインの写真が表示されるまで<span class="term">（LCPと呼ばれ、Googleが検索順位の判断に使う重要指標）</span></td><td><strong style="color:var(--red)">11.3 秒</strong></td><td>非常に遅い（目安2.5秒以下）</td></tr>
+<tr><td>表示中に画面がガタつく度合い</td><td>0</td><td>優秀</td></tr>
+</table>
+<p>プログラムの動きは軽く画面も安定しているため、<strong>遅さの原因はほぼ「写真のデータが重いこと」と「読み込みの順序」に集中</strong>している。</p>
+<h3>Googleが示した改善方法（効果の見込み付き）</h3>
+<ul>
+<li><strong>ブラウザに「一度見たデータは保存して使い回してよい」と指示する設定</strong><span class="term">（キャッシュと呼ばれる仕組み）</span>がない — 約1.4MBぶんの再読み込みを削減できる見込み</li>
+<li><strong>写真の軽量化</strong> — 画質をほぼ保ったままデータを3割ほど小さくできる新しい画像形式<span class="term">（WebPと呼ばれる）</span>への変換と圧縮で、約0.7〜0.9MBの削減見込み</li>
+<li><strong>画面に映ってから写真を読み込む仕組み</strong><span class="term">（遅延読み込みと呼ばれる）</span>が未設定 — 開いた瞬間に全写真を一度に読み込んでいる</li>
+<li>デザイン用ファイルの読み込み順序の調整 — 約0.6秒の短縮見込み</li>
+<li>文字フォントの表示設定の調整 — 約0.3秒の短縮見込み</li>
+<li><strong>Facebookの「いいね」ボタンの埋め込みが2つ</strong> — 表示を遅くするうえ、閲覧者の情報がFacebookに送られるため、個人情報保護の観点からも要否の検討を推奨</li>
+</ul>
+</div>
+
+<div class="issue">
+<h3>「ユーザー補助 85点」の減点要因</h3>
+<p>Googleの自動チェックでも、本レポートの指摘（拡大禁止・本文の目印なし・フォームの名札なし・見出しの順序）がそのまま検出され、裏付けられた。加えて新たに、<strong>文字色と背景色のコントラスト（明暗差）が弱く読みにくい箇所</strong>があることなどが検出された。</p>
+</div>
+
+<h2 class="sev-blue">🔵 集客・成約につなげる改善（戦略レベル）</h2>
+<div class="issue">
+<ul>
+<li><strong>費用事例の更新</strong>: 掲載中の5事例はすべて2008〜2010年完成のもので、現在の相場と離れている可能性が高い。近年の事例への差し替え・追加を推奨</li>
+<li><strong>更新されている感を出す</strong>: 新着情報が2026年5月の1件の前は2025年4月。施工中の様子やコンセプトルームの紹介など、軽い更新でも「動いているサイト」に見せる価値は大きい</li>
+<li><strong>ブログの扱いを決める</strong>: 最終記事が2018年。「30年愛されるモノ」という切り口は良いので、再開するか、本体サイトに統合して資産化するか判断を。漆喰や自然素材の解説記事は、検索からの新規来訪の柱になりうる</li>
+<li><strong>問い合わせの手前の選択肢を作る</strong>: 現状の窓口は電話とお問い合わせフォームのみ。資料請求や見学会申込など、まだ問い合わせには踏み切れない検討中の方の受け皿があると取りこぼしが減る</li>
+<li><strong>実例ページの回遊</strong>: 各実例に「似た事例」や費用ページへの案内があると、検討者がサイト内に長く滞在する</li>
+<li><strong>実例の5番が欠番</strong>: 一覧にpage5がない。意図的な非公開なら問題ないが、古いリンクが残っていないか確認推奨</li>
+<li><strong>フッターの著作権表示に年がない</strong>: 細かい点だが信頼性向上の余地</li>
+</ul>
+</div>
+
+<h2>今回確認できなかった項目</h2>
+<div class="issue">
+<ul>
+<li>お問い合わせフォームの送信動作と迷惑メール対策（ロボットによる自動送信を防ぐ仕組みの有無）</li>
+<li>サーバー側の詳しい安全設定 — 管理会社への確認を推奨</li>
+<li>実際の訪問者の速度データ — 訪問数が少ないとGoogleにデータが蓄積されないため、Google Search Console<span class="term">（Googleが無料提供するサイト管理ツール）</span>での継続確認を推奨</li>
+</ul>
+</div>
+
+<h2>優先対応リスト</h2>
+<table>
+<tr><th>優先度</th><th>やること</th><th>効果</th><th>手間</th></tr>
+<tr><td>🔴 1</td><td>安全な通信方式（https）への自動転送設定＋サイト内リンクの書き換え</td><td>安全性・検索順位</td><td>小</td></tr>
+<tr><td>🔴 2</td><td>ブログのWordPress更新（または固定化・閉鎖）</td><td>安全性</td><td>中</td></tr>
+<tr><td>🔴 3</td><td>正規URL指定・サイトの地図（sitemap）・案内板（robots.txt）の設置</td><td>検索順位</td><td>小</td></tr>
+<tr><td>🔴 4</td><td>各ページの大見出し（H1）の整備</td><td>検索順位・読み上げ対応</td><td>中</td></tr>
+<tr><td>🔴 5</td><td>トップページの「拡大禁止」設定の解除</td><td>使いやすさ・スマホ評価</td><td>小（1行）</td></tr>
+<tr><td>🟠 6</td><td>誤字修正（Timelsss・ブロク）・実例「有明」のシェア設定修正・画像説明文の整備</td><td>品質・検索順位</td><td>小</td></tr>
+<tr><td>🟠 7</td><td>検索結果の紹介文（meta description）整備・Xシェア設定の追加</td><td>検索順位・SNS</td><td>中</td></tr>
+<tr><td>🟠 8</td><td>Google向け会社情報カード（構造化データ）の追加</td><td>検索結果での見え方</td><td>小</td></tr>
+<tr><td>🟠 9</td><td>読み上げソフト対応（本文の目印・フォームの名札など）</td><td>使いやすさ</td><td>中</td></tr>
+<tr><td>🟠 10</td><td>写真の軽量化（WebP化・圧縮・遅延読み込み）＋キャッシュ設定 <span class="note">※スマホ表示11.3秒の実測を受け優先度高</span></td><td>表示速度・検索順位</td><td>中</td></tr>
+<tr><td>🟡 11</td><td>メニューへの名前付け・Facebookボタンの要否検討</td><td>使いやすさ・プライバシー</td><td>小</td></tr>
+<tr><td>🟡 12</td><td>費用事例の更新・資料請求など問い合わせ前の受け皿づくり</td><td>成約率</td><td>中〜大</td></tr>
+</table>
+
+<footer>timelessliving.jp ウェブサイト監査レポート ｜ 2026年6月12日作成</footer>
+</div>
+</body>
+</html>
