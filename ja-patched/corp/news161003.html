@@ -33,16 +33,28 @@
   <link rel="alternate" hreflang="en" href="https://www.timelessliving.jp/en/corp/news161003.html">
   <link rel="alternate" hreflang="x-default" href="https://www.timelessliving.jp/corp/news161003.html">
 
-  <style>/* language switch: scoped to this page, tl.css untouched */
+  <style>/* Added to the page, not to tl.css, which is maintained separately.
+     Language switch, and a readability pass for a readership that skews older. */
   .lang-current{color:#bf360c}
   .lang-sp{line-height:1;vertical-align:middle;font-size:12px;letter-spacing:.02em}
   .lang-sp .lang-switch{padding:0 10px 0 0}
-  /* at 320px the logo, the switch and the burger are 1px too wide to
-     share a line, and the burger drops below the logo */
   @media screen and (max-width:360px){
     .lang-sp{font-size:11px}
     .lang-sp .lang-switch{padding:0 4px 0 0}
   }
+  /* desktop body was 14px; mobile was already 16px. 1.8 is the leading the
+     site already uses on its feature pages. */
+  body{font-size:16px;line-height:1.8}
+  p{margin-bottom:2.2em}
+  .news dl{font-size:16px}
+  .news dt{font-size:15px}
+  table{font-size:15px}
+  /* the smallest text on the site, and the lowest contrast: 4.2:1 -> 5.2:1 */
+  .copyright,.info li,div.capty-caption,span.post_date,p.postmetadata{font-size:13px}
+  .sec_txt{color:#666}
+  /* a 16px body widens the whitespace between the nav’s inline-block items,
+     which tipped the row onto two lines at 768px. The labels set their own. */
+  .g_nav ul{font-size:0}
   </style>
 </head>
 <body>
