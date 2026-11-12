@@ -110,6 +110,18 @@ def rewrite_urls(html, jadir):
     return html
 
 
+# The social link the switch sits beside. Older news pages carry Facebook
+# where the rest carry Instagram, so each anchor is tried in turn.
+DESKTOP_ANCHORS = [
+    '<li><a class="header-link" href="https://www.instagram.com/',
+    '<li><a class="header-link" href="https://www.facebook.com/',
+]
+MOBILE_ANCHORS = [
+    '<li><a class="primary-link" href="https://www.instagram.com/',
+    '<li><a class="primary-link" href="https://www.facebook.com/',
+]
+
+
 def canonical(japath):
     """The home page is served from the directory, not from index.html."""
     return '' if japath == 'index.html' else japath
@@ -132,16 +144,18 @@ def add_language_switch(html, japath):
     ja = 'https://www.timelessliving.jp/' + japath
     desktop = ('<li><a class="header-link lang-switch" href="%s" lang="ja" '
                'hreflang="ja">日本語</a></li>' % ja)
-    anchor = '<li><a class="header-link" href="https://www.instagram.com/'
-    if anchor in html:
-        html = html.replace(anchor, desktop + anchor, 1)
+    for anchor in DESKTOP_ANCHORS:
+        if anchor in html:
+            html = html.replace(anchor, desktop + anchor, 1)
+            break
     else:
         print('    ! desktop language switch anchor not found')
     mobile = ('<li><a class="primary-link lang-switch" href="%s" lang="ja" '
               'hreflang="ja">日本語</a></li>\n\t\t\t' % ja)
-    m_anchor = '<li><a class="primary-link" href="https://www.instagram.com/'
-    if m_anchor in html:
-        html = html.replace(m_anchor, mobile + m_anchor, 1)
+    for anchor in MOBILE_ANCHORS:
+        if anchor in html:
+            html = html.replace(anchor, mobile + anchor, 1)
+            break
     else:
         print('    ! mobile language switch anchor not found')
     return html
@@ -166,6 +180,13 @@ def build(outroot, only=None):
         html = translate(html, table, page.get('raw', []))
         jadir = os.path.dirname(japath)
         html = rewrite_urls(html, jadir)
+        desc = page.get('description')
+        if desc:
+            before = html
+            html = html.replace('<meta name="description" content="">',
+                                '<meta name="description" content="%s">' % desc, 1)
+            if html == before:
+                print('    ! no empty description tag to fill')
         html = add_head_links(html, japath)
         html = add_language_switch(html, japath)
         html = html.replace('<html lang="ja-JP"', '<html lang="en"', 1)
