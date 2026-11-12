@@ -116,10 +116,9 @@ DESKTOP_ANCHORS = [
     '<li><a class="header-link" href="https://www.instagram.com/',
     '<li><a class="header-link" href="https://www.facebook.com/',
 ]
-MOBILE_ANCHORS = [
-    '<li><a class="primary-link" href="https://www.instagram.com/',
-    '<li><a class="primary-link" href="https://www.facebook.com/',
-]
+MOBILE_HEADER_ANCHOR = '<li><a class="header-link menu sb-toggle-right"'
+
+LANG_STYLE = '\n  <style>/* language switch: scoped to this page, tl.css untouched */\n  .lang-current{color:#bf360c}\n  .lang-sp{line-height:1;vertical-align:middle;font-size:12px;letter-spacing:.02em}\n  .lang-sp .lang-switch{padding:0 10px 0 0}\n  /* at 320px the logo, the switch and the burger are 1px too wide to\n     share a line, and the burger drops below the logo */\n  @media screen and (max-width:360px){\n    .lang-sp{font-size:11px}\n    .lang-sp .lang-switch{padding:0 4px 0 0}\n  }\n  </style>'
 
 
 def canonical(japath):
@@ -140,25 +139,31 @@ def add_head_links(html, japath):
 
 
 def add_language_switch(html, japath):
+    """Both languages in the header of both layouts, the current one in accent.
+
+    Mobile carries it beside the burger rather than inside the slide-out menu, so
+    an English reader landing on a Japanese page sees the way out without opening
+    anything; under 360px the current-language marker drops and only the tappable
+    one remains, which is what fits beside the logo.
+
+    The rules live in a style block on the page. tl.css is maintained by someone
+    else and is never edited.
+    """
     japath = canonical(japath)
     ja = 'https://www.timelessliving.jp/' + japath
-    desktop = ('<li><a class="header-link lang-switch" href="%s" lang="ja" '
-               'hreflang="ja">日本語</a></li>' % ja)
+    desktop = '<li><a class="header-link lang-switch" href="%s" lang="ja" hreflang="ja">日本語</a><span class="header-link lang-current">English</span></li>' % ja
     for anchor in DESKTOP_ANCHORS:
         if anchor in html:
             html = html.replace(anchor, desktop + anchor, 1)
             break
     else:
         print('    ! desktop language switch anchor not found')
-    mobile = ('<li><a class="primary-link lang-switch" href="%s" lang="ja" '
-              'hreflang="ja">日本語</a></li>\n\t\t\t' % ja)
-    for anchor in MOBILE_ANCHORS:
-        if anchor in html:
-            html = html.replace(anchor, mobile + anchor, 1)
-            break
+    mobile = '<li class="lang-sp"><a class="header-link lang-switch" href="%s" lang="ja" hreflang="ja">日本語</a></li>' % ja
+    if MOBILE_HEADER_ANCHOR in html:
+        html = html.replace(MOBILE_HEADER_ANCHOR, mobile + MOBILE_HEADER_ANCHOR, 1)
     else:
-        print('    ! mobile language switch anchor not found')
-    return html
+        print('    ! mobile header anchor not found')
+    return html.replace('</head>', LANG_STYLE + '\n</head>', 1)
 
 
 def build(outroot, only=None):

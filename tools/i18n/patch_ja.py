@@ -32,8 +32,9 @@ for p in glob.glob(os.path.join(SRC, 'corp', 'news*.html')):
 # Older news pages carry a Facebook link where the rest carry Instagram.
 DESKTOP_ANCHORS = ['<li><a class="header-link" href="https://www.instagram.com/',
                    '<li><a class="header-link" href="https://www.facebook.com/']
-MOBILE_ANCHORS = ['<li><a class="primary-link" href="https://www.instagram.com/',
-                  '<li><a class="primary-link" href="https://www.facebook.com/']
+MOBILE_HEADER_ANCHOR = '<li><a class="header-link menu sb-toggle-right"'
+
+LANG_STYLE = '\n  <style>/* language switch: scoped to this page, tl.css untouched */\n  .lang-current{color:#bf360c}\n  .lang-sp{line-height:1;vertical-align:middle;font-size:12px;letter-spacing:.02em}\n  .lang-sp .lang-switch{padding:0 10px 0 0}\n  /* at 320px the logo, the switch and the burger are 1px too wide to\n     share a line, and the burger drops below the logo */\n  @media screen and (max-width:360px){\n    .lang-sp{font-size:11px}\n    .lang-sp .lang-switch{padding:0 4px 0 0}\n  }\n  </style>'
 
 
 def patch(html, path):
@@ -48,8 +49,7 @@ def patch(html, path):
     else:
         notes.append('no </head>')
 
-    desktop = ('<li><a class="header-link lang-switch" href="%s" lang="en" '
-               'hreflang="en">English</a></li>' % en)
+    desktop = '<li><span class="header-link lang-current">日本語</span><a class="header-link lang-switch" href="%s" lang="en" hreflang="en">English</a></li>' % en
     for anchor in DESKTOP_ANCHORS:
         if anchor in html:
             html = html.replace(anchor, desktop + anchor, 1)
@@ -57,14 +57,13 @@ def patch(html, path):
     else:
         notes.append('no header nav')
 
-    mobile = ('<li><a class="primary-link lang-switch" href="%s" lang="en" '
-              'hreflang="en">English</a></li>\n\t\t\t' % en)
-    for anchor in MOBILE_ANCHORS:
-        if anchor in html:
-            html = html.replace(anchor, mobile + anchor, 1)
-            break
+    mobile = '<li class="lang-sp"><a class="header-link lang-switch" href="%s" lang="en" hreflang="en">English</a></li>' % en
+    if MOBILE_HEADER_ANCHOR in html:
+        html = html.replace(MOBILE_HEADER_ANCHOR, mobile + MOBILE_HEADER_ANCHOR, 1)
     else:
-        notes.append('no slide-out menu')
+        notes.append('no mobile header')
+
+    html = html.replace('</head>', LANG_STYLE + '\n</head>', 1)
 
     return html, notes
 
