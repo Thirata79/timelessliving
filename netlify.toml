@@ -1,7 +1,10 @@
-# Preview-only configuration. Not part of the deliverable: the English pages in
-# en/ are uploaded to the real server untouched, and this file stays out of git.
+# Preview-only configuration. Not part of the deliverable: the pages in en/ and
+# ja-patched/ go to the real server untouched. The build assembles a copy that
+# carries both editions — Japanese at the root, English under /en/ — so the
+# language switch works in both directions before anything is uploaded.
 [build]
-  publish = "en"
+  publish = "_preview"
+  command = "python3 tools/preview/assemble.py _preview"
 
 # The English pages reference the live site's shared assets by root-relative
 # path. Anything not in en/ is proxied to timelessliving.jp, so no image, font
