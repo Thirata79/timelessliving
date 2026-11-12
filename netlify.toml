@@ -1,0 +1,55 @@
+# Preview-only configuration. Not part of the deliverable: the English pages in
+# en/ are uploaded to the real server untouched, and this file stays out of git.
+[build]
+  publish = "en"
+
+# The English pages reference the live site's shared assets by root-relative
+# path. Anything not in en/ is proxied to timelessliving.jp, so no image, font
+# or stylesheet has to be copied for the preview.
+[[redirects]]
+  from = "/css/*"
+  to = "https://www.timelessliving.jp/css/:splat"
+  status = 200
+[[redirects]]
+  from = "/js/*"
+  to = "https://www.timelessliving.jp/js/:splat"
+  status = 200
+[[redirects]]
+  from = "/font/*"
+  to = "https://www.timelessliving.jp/font/:splat"
+  status = 200
+[[redirects]]
+  from = "/images/*"
+  to = "https://www.timelessliving.jp/images/:splat"
+  status = 200
+[[redirects]]
+  from = "/about/images/*"
+  to = "https://www.timelessliving.jp/about/images/:splat"
+  status = 200
+[[redirects]]
+  from = "/corp/images/*"
+  to = "https://www.timelessliving.jp/corp/images/:splat"
+  status = 200
+[[redirects]]
+  from = "/interview/images/*"
+  to = "https://www.timelessliving.jp/interview/images/:splat"
+  status = 200
+[[redirects]]
+  from = "/portfolio/images/*"
+  to = "https://www.timelessliving.jp/portfolio/images/:splat"
+  status = 200
+[[redirects]]
+  from = "/service/images/*"
+  to = "https://www.timelessliving.jp/service/images/:splat"
+  status = 200
+[[redirects]]
+  from = "/policy/images/*"
+  to = "https://www.timelessliving.jp/policy/images/:splat"
+  status = 200
+
+# A public copy of the site must never be indexed: it would compete with
+# timelessliving.jp for the same content.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
