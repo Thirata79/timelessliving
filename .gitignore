@@ -1,0 +1,5 @@
+# Netlify CLI link state: a local pointer to the preview site, not project config
+.netlify/
+
+# assembled by tools/preview/assemble.py at deploy time
+_preview/

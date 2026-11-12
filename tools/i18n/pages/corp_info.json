@@ -1,0 +1,46 @@
+{
+ "text": {
+  "TIMELESS LIVINGへのお問い合わせは、以下のフォームに必要事項（すべて必須項目）を入力して「確認」ボタンを押してください。": "To contact Timeless Living, please complete every field in the form below — all are required — and press Confirm.",
+  "お電話でのご相談も承っております。": "You are also welcome to call us.",
+  "プライバシーポリシーについて": "Our privacy policy",
+  "お問い合わせフォーム": "Enquiry form",
+  "お名前": "Your name",
+  "メールアドレス": "Email address",
+  "電話番号": "Telephone number",
+  "リフォーム予定地": "Where the work would be",
+  "住所": "Address",
+  "上記と同じ": "Same as above",
+  "その他（住所をご記入ください）": "Elsewhere (please give the address)",
+  "物件の種類": "Type of property",
+  "マンション": "Apartment",
+  "戸建（鉄筋コンクリート造）": "House (reinforced concrete)",
+  "戸建（鉄骨造）": "House (steel frame)",
+  "木造・２x４住宅につきましてはお受けしておりません。": "We do not take on timber-frame or 2×4 houses.",
+  "鉄筋コンクリート造・鉄骨造の戸建住宅につきましては対応しかねる場合もございますのでご了承下さい。": "Please note that we may also be unable to take on houses in reinforced concrete or steel frame.",
+  "物件の居住形態": "How the property is occupied",
+  "現在居住中の物件": "We live there now",
+  "親・親族の家": "A parent's or relative's home",
+  "今後購入・取得予定の物件": "A property we intend to buy",
+  "その他": "Other",
+  "ご連絡方法": "How we should reply",
+  "電話": "By telephone",
+  "メール": "By email",
+  "リフォームのご相談内容": "What you would like to discuss",
+  "TIMELESS LIVINGへのお問い合わせは、以下のフォームに必要事項を入力して送信してください。お電話でのご相談も承っております。 TEL:03-5456-5058": "To contact Timeless Living, complete the form below and send it. You are also welcome to call us on 03-5456-5058.",
+  "例：山田太郎": "e.g. Taro Yamada",
+  "例：0354565058": "e.g. 0354565058",
+  "例：東京都目黒区青葉台1-2-6　コートハウス青葉台1F": "e.g. Courthouse Aobadai 1F, 1-2-6 Aobadai, Meguro, Tokyo",
+  "例：東京都目黒区": "e.g. Meguro, Tokyo",
+  "確認": "Confirm"
+ },
+ "raw": [
+  [
+   "action=\"mail.php\"",
+   "action=\"/corp/mail.php\""
+  ],
+  [
+   "href=\"https://www.timelessliving.jp/policy/index.html\"",
+   "href=\"/en/policy/index.html\""
+  ]
+ ]
+}
