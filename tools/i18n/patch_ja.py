@@ -34,7 +34,7 @@ DESKTOP_ANCHORS = ['<li><a class="header-link" href="https://www.instagram.com/'
                    '<li><a class="header-link" href="https://www.facebook.com/']
 MOBILE_HEADER_ANCHOR = '<li><a class="header-link menu sb-toggle-right"'
 
-LANG_STYLE = '\n  <style>/* Added to the page, not to tl.css, which is maintained separately.\n     Language switch, and a readability pass for a readership that skews older. */\n  .lang-current{color:#bf360c}\n  .lang-sp{line-height:1;vertical-align:middle;font-size:12px;letter-spacing:.02em}\n  .lang-sp .lang-switch{padding:0 10px 0 0}\n  @media screen and (max-width:360px){\n    .lang-sp{font-size:11px}\n    .lang-sp .lang-switch{padding:0 4px 0 0}\n  }\n  /* desktop body was 14px; mobile was already 16px. 1.8 is the leading the\n     site already uses on its feature pages. */\n  body{font-size:16px;line-height:1.8}\n  p{margin-bottom:2.6em}\n  .news dl{font-size:16px}\n  .news dt{font-size:15px}\n  table{font-size:15px}\n  /* the smallest text on the site, and the lowest contrast: 4.2:1 -> 5.2:1 */\n  .copyright,.info li,div.capty-caption,span.post_date,p.postmetadata{font-size:13px}\n  .sec_txt{color:#666}\n  /* the interviewer. Italic is already in the site’s vocabulary (.author).\n     synthesises the slant for Japanese. #666 is 5.2:1 here, so the question\n     reads as a second voice without dropping below the contrast minimum. The\n     space goes before it, not after, so it stays with the answer below. */\n  .interview dt{color:#666;margin:2.6em 0 .8em}\n  .interview dd{margin-bottom:2em}\n  /* a 16px body widens the whitespace between the nav’s inline-block items,\n     which tipped the row onto two lines at 768px. The labels set their own. */\n  .g_nav ul{font-size:0}\n  </style>'
+LANG_STYLE = '\n  <style>/* Added to the page, not to tl.css, which is maintained separately.\n     The language switch only. Nothing the page already had is restyled:\n     no type sizes, no colours, no spacing. #bf360c is the accent tl.css\n     already uses, so the current-language marker stays in the palette. */\n  .lang-current{color:#bf360c}\n  .lang-sp{line-height:1;vertical-align:middle;font-size:14px;letter-spacing:.04em}\n  .lang-sp .lang-switch{padding:0 10px 0 0}\n  </style>'
 
 
 def patch(html, path):
@@ -49,7 +49,7 @@ def patch(html, path):
     else:
         notes.append('no </head>')
 
-    desktop = '<li><span class="header-link lang-current">日本語</span><a class="header-link lang-switch" href="%s" lang="en" hreflang="en">English</a></li>' % en
+    desktop = '<li><span class="header-link lang-current">JP</span><a class="header-link lang-switch" href="%s" hreflang="en" aria-label="English">EN</a></li>' % en
     for anchor in DESKTOP_ANCHORS:
         if anchor in html:
             html = html.replace(anchor, desktop + anchor, 1)
@@ -57,7 +57,7 @@ def patch(html, path):
     else:
         notes.append('no header nav')
 
-    mobile = '<li class="lang-sp"><a class="header-link lang-switch" href="%s" lang="en" hreflang="en">English</a></li>' % en
+    mobile = '<li class="lang-sp"><a class="header-link lang-switch" href="%s" hreflang="en" aria-label="English">EN</a></li>' % en
     if MOBILE_HEADER_ANCHOR in html:
         html = html.replace(MOBILE_HEADER_ANCHOR, mobile + MOBILE_HEADER_ANCHOR, 1)
     else:

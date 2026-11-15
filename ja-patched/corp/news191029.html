@@ -34,33 +34,12 @@
   <link rel="alternate" hreflang="x-default" href="https://www.timelessliving.jp/corp/news191029.html">
 
   <style>/* Added to the page, not to tl.css, which is maintained separately.
-     Language switch, and a readability pass for a readership that skews older. */
+     The language switch only. Nothing the page already had is restyled:
+     no type sizes, no colours, no spacing. #bf360c is the accent tl.css
+     already uses, so the current-language marker stays in the palette. */
   .lang-current{color:#bf360c}
-  .lang-sp{line-height:1;vertical-align:middle;font-size:12px;letter-spacing:.02em}
+  .lang-sp{line-height:1;vertical-align:middle;font-size:14px;letter-spacing:.04em}
   .lang-sp .lang-switch{padding:0 10px 0 0}
-  @media screen and (max-width:360px){
-    .lang-sp{font-size:11px}
-    .lang-sp .lang-switch{padding:0 4px 0 0}
-  }
-  /* desktop body was 14px; mobile was already 16px. 1.8 is the leading the
-     site already uses on its feature pages. */
-  body{font-size:16px;line-height:1.8}
-  p{margin-bottom:2.6em}
-  .news dl{font-size:16px}
-  .news dt{font-size:15px}
-  table{font-size:15px}
-  /* the smallest text on the site, and the lowest contrast: 4.2:1 -> 5.2:1 */
-  .copyright,.info li,div.capty-caption,span.post_date,p.postmetadata{font-size:13px}
-  .sec_txt{color:#666}
-  /* the interviewer. Italic is already in the site’s vocabulary (.author).
-     synthesises the slant for Japanese. #666 is 5.2:1 here, so the question
-     reads as a second voice without dropping below the contrast minimum. The
-     space goes before it, not after, so it stays with the answer below. */
-  .interview dt{color:#666;margin:2.6em 0 .8em}
-  .interview dd{margin-bottom:2em}
-  /* a 16px body widens the whitespace between the nav’s inline-block items,
-     which tipped the row onto two lines at 768px. The labels set their own. */
-  .g_nav ul{font-size:0}
   </style>
 </head>
 <body>
@@ -86,13 +65,13 @@
 	      <nav class="nav right no-mobile">
 	        <ul class="no-style-list">
 	          <li><a class="header-link " href="info.html"><span class="icon-phone"></span> 03-5456-5058 / お問い合わせ</a></li>
-	          <li><span class="header-link lang-current">日本語</span><a class="header-link lang-switch" href="https://www.timelessliving.jp/en/corp/news191029.html" lang="en" hreflang="en">English</a></li><li><a class="header-link" href="https://www.instagram.com/timelessliving.jp/" target="_blank"><img class="logo block" src="../images/logo_instagram.png" alt="TIMELESS LIVINGのインスタグラムページヘ" width="32" height="32"></a><a class="header-link" href="https://www.pinterest.jp/timeless_living/" target="_blank"><img class="logo block" src="../images/logo_pinterest.png" alt="TIMELESS LIVINGのピンタレストページヘ" width="32" height="32"></a></li>
+	          <li><span class="header-link lang-current">JP</span><a class="header-link lang-switch" href="https://www.timelessliving.jp/en/corp/news191029.html" hreflang="en" aria-label="English">EN</a></li><li><a class="header-link" href="https://www.instagram.com/timelessliving.jp/" target="_blank"><img class="logo block" src="../images/logo_instagram.png" alt="TIMELESS LIVINGのインスタグラムページヘ" width="32" height="32"></a><a class="header-link" href="https://www.pinterest.jp/timeless_living/" target="_blank"><img class="logo block" src="../images/logo_pinterest.png" alt="TIMELESS LIVINGのピンタレストページヘ" width="32" height="32"></a></li>
 	        </ul>
 	      </nav>
 
 	      <nav class="nav right no-desktop no-tablet show-mobile clear">
 	        <ul class="no-style-list">
-	          <li class="lang-sp"><a class="header-link lang-switch" href="https://www.timelessliving.jp/en/corp/news191029.html" lang="en" hreflang="en">English</a></li><li><a class="header-link menu sb-toggle-right" href=""><img src="../images/btn_sp_menu.png" alt="メニュー" width="36" height="36"></a></li>
+	          <li class="lang-sp"><a class="header-link lang-switch" href="https://www.timelessliving.jp/en/corp/news191029.html" hreflang="en" aria-label="English">EN</a></li><li><a class="header-link menu sb-toggle-right" href=""><img src="../images/btn_sp_menu.png" alt="メニュー" width="36" height="36"></a></li>
 	        </ul>
 	      </nav>
 	      

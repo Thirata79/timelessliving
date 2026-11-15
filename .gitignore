@@ -3,3 +3,4 @@
 
 # assembled by tools/preview/assemble.py at deploy time
 _preview/
+tools/site

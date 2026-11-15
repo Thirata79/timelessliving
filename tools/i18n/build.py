@@ -118,7 +118,7 @@ DESKTOP_ANCHORS = [
 ]
 MOBILE_HEADER_ANCHOR = '<li><a class="header-link menu sb-toggle-right"'
 
-LANG_STYLE = '\n  <style>/* Added to the page, not to tl.css, which is maintained separately.\n     Language switch, and a readability pass for a readership that skews older. */\n  .lang-current{color:#bf360c}\n  .lang-sp{line-height:1;vertical-align:middle;font-size:12px;letter-spacing:.02em}\n  .lang-sp .lang-switch{padding:0 10px 0 0}\n  @media screen and (max-width:360px){\n    .lang-sp{font-size:11px}\n    .lang-sp .lang-switch{padding:0 4px 0 0}\n  }\n  /* desktop body was 14px; mobile was already 16px. 1.8 is the leading the\n     site already uses on its feature pages. */\n  body{font-size:16px;line-height:1.8}\n  p{margin-bottom:2.6em}\n  .news dl{font-size:16px}\n  .news dt{font-size:15px}\n  table{font-size:15px}\n  /* the smallest text on the site, and the lowest contrast: 4.2:1 -> 5.2:1 */\n  .copyright,.info li,div.capty-caption,span.post_date,p.postmetadata{font-size:13px}\n  .sec_txt{color:#666}\n  /* the interviewer. Italic is already in the site’s vocabulary (.author).\n     synthesises the slant for Japanese. #666 is 5.2:1 here, so the question\n     reads as a second voice without dropping below the contrast minimum. The\n     space goes before it, not after, so it stays with the answer below. */\n  .interview dt{color:#666;margin:2.6em 0 .8em}\n  .interview dd{margin-bottom:2em}\n  /* a 16px body widens the whitespace between the nav’s inline-block items,\n     which tipped the row onto two lines at 768px. The labels set their own. */\n  .g_nav ul{font-size:0}\n  </style>'
+LANG_STYLE = '\n  <style>/* Added to the page, not to tl.css, which is maintained separately.\n     The language switch, plus type sizing for the English edition: Latin text\n     reads smaller than Japanese at the same pixel size, so the body is set to\n     16px here. The Japanese edition is left at the size it already uses. */\n  .lang-current{color:#bf360c}\n  .lang-sp{line-height:1;vertical-align:middle;font-size:14px;letter-spacing:.04em}\n  .lang-sp .lang-switch{padding:0 10px 0 0}\n  /* desktop body was 14px; mobile was already 16px. 1.8 is the leading the\n     site already uses on its feature pages. */\n  body{font-size:16px;line-height:1.8}\n  p{margin-bottom:2.6em}\n  .news dl{font-size:16px}\n  .news dt{font-size:15px}\n  table{font-size:15px}\n  /* the smallest text on the site, and the lowest contrast: 4.2:1 -> 5.2:1 */\n  .copyright,.info li,div.capty-caption,span.post_date,p.postmetadata{font-size:13px}\n  .sec_txt{color:#666}\n  /* the interviewer, as a second voice: grey rather than a different face.\n     #666 is 5.2:1 here, so it stays above the contrast minimum. */\n  .interview dt{color:#666;margin:2.6em 0 .8em}\n  .interview dd{margin-bottom:2em}\n  /* a 16px body widens the whitespace between the nav\u2019s inline-block items,\n     which tipped the row onto two lines at 768px. The labels set their own. */\n  .g_nav ul{font-size:0}\n  </style>'
 
 
 def canonical(japath):
@@ -151,14 +151,14 @@ def add_language_switch(html, japath):
     """
     japath = canonical(japath)
     ja = 'https://www.timelessliving.jp/' + japath
-    desktop = '<li><a class="header-link lang-switch" href="%s" lang="ja" hreflang="ja">日本語</a><span class="header-link lang-current">English</span></li>' % ja
+    desktop = '<li><a class="header-link lang-switch" href="%s" hreflang="ja" aria-label="\u65e5\u672c\u8a9e">JP</a><span class="header-link lang-current">EN</span></li>' % ja
     for anchor in DESKTOP_ANCHORS:
         if anchor in html:
             html = html.replace(anchor, desktop + anchor, 1)
             break
     else:
         print('    ! desktop language switch anchor not found')
-    mobile = '<li class="lang-sp"><a class="header-link lang-switch" href="%s" lang="ja" hreflang="ja">日本語</a></li>' % ja
+    mobile = '<li class="lang-sp"><a class="header-link lang-switch" href="%s" hreflang="ja" aria-label="\u65e5\u672c\u8a9e">JP</a></li>' % ja
     if MOBILE_HEADER_ANCHOR in html:
         html = html.replace(MOBILE_HEADER_ANCHOR, mobile + MOBILE_HEADER_ANCHOR, 1)
     else:
