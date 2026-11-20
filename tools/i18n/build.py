@@ -134,6 +134,12 @@ def add_head_links(html, japath):
         '\n  <link rel="alternate" hreflang="ja" href="%s">'
         '\n  <link rel="alternate" hreflang="en" href="%s">'
         '\n  <link rel="alternate" hreflang="x-default" href="%s">' % (ja, en, ja)
+        # The page already carries og:title/description/url; it has never said
+        # which language they are in. The copy is British English throughout
+        # (colour, licence, favourite; no American spelling anywhere), so
+        # en_GB is the honest value rather than the reflex en_US.
+        + '\n  <meta property="og:locale" content="en_GB">'
+        + '\n  <meta property="og:locale:alternate" content="ja_JP">'
     )
     return html.replace('</head>', block + '\n</head>', 1)
 
