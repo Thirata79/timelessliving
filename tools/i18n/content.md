@@ -99,17 +99,35 @@ dream home        同上
 
 ---
 
-## 5. 現状サイトへの適用（件数）
+## 5. 現状サイトへの適用
+
+### 適用済み
+
+| 作業 | 変更前 → 後 | |
+|---|---|---|
+| `unit bath` → `prefabricated bathroom unit` / `bathroom unit` | 6 → **0** | ✓ |
+| `breathable` を漆喰の説明に足す | 0 → **23** | ✓ |
+| `built-in joinery` → `bespoke joinery` | 4 → **0** | ✓ |
+| `shikkui` を素材の紹介箇所で名指しする | 2 → **24** | ✓ |
+
+`breathable` は三つの性能の並びの最後に置き、`regulating humidity` の言い換えとして添えた。
+主張を足したのではなく、読み手が知っている見出し語を付けただけ。
+
+```
+… excellent for fire resistance, for safety, and for regulating humidity
+— the wall is breathable, taking up moisture and giving it back.
+```
+
+`shikkui` は素材を紹介する文（`we propose shikkui lime plaster` / `A 100% natural shikkui
+lime plaster`）にだけ入れ、以降は `lime plaster` のまま。全部を置き換えると読みにくくなる。
+
+### 未着手
 
 | 作業 | 件数 | 優先 |
 |---|---|---|
-| `unit bath` → `prefabricated bathroom` | 10 | **高**（通じない） |
-| `breathable` を漆喰の説明に足す | 現状0件 | **高**（主張はあるのに見出し語がない） |
-| `built-in joinery` → `bespoke joinery` | 5 | 中 |
-| `shikkui` の露出を増やす | 465件中2件のみ | 中 |
 | `title` を60字以内に | 81 / 102 | 高（検索結果で切れる） |
 | `description` を160字以内に | 78 / 102 | 高（同上） |
-| `craftsmen` → `makers` | 1 | 低 |
+| `craftsmen` → `tradespeople` | 1 | 低 |
 
 ニュース62件を削除すれば、title / description の対象は半減する。
 
