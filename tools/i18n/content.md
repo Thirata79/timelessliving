@@ -50,17 +50,29 @@ Aは正確さ、Bは質感を担当する。混ぜて使わない。片方の語
 
 ### B — 素材と仕事の語彙
 
+出典は実際に読んだページ。引用はそのままの文言。
+
 | 日本語 | 現状 | 推奨 | 判定 | 根拠 |
 |---|---|---|---|---|
-| 漆喰 | lime plaster（465件）/ shikkui（2件） | **初出 `shikkui lime plaster`、以降 `shikkui`** | △ | 英国の建築メディアは日本語名＋短い註で書く。Dezeen は "an adapted shikkui, a type of plaster typically formed of hydrated lime, hemp fibre and seaweed"。**現状は日本語名をほぼ使っておらず、差別化と検索語の両方を捨てている** |
-| 漆喰の性能 | — | **breathable** | △ | 英国の改修系は漆喰を「呼吸する」で語る。日本語の調湿とほぼ同じ主張。使える |
+| 漆喰 | lime plaster（465件）/ shikkui（2件） | **初出 `shikkui lime plaster`、以降 `shikkui`** | △ | Dezeen は日本語名＋短い註で書く — "an adapted shikkui, a type of plaster typically formed of hydrated lime, hemp fibre and seaweed"。**現状は日本語名をほぼ使っておらず、差別化と検索語の両方を捨てている** |
+| 調湿性 | regulates humidity（29件） | **regulates humidity** | ✓ | 偶然だが英語圏の言い方と一致。Natalie Walton "It also regulates humidity levels, keeping your home more comfortable year-round" |
+| 漆喰の性能（総称） | **なし（0件）** | **breathable / breathability** | ✗ | **これが最大の取りこぼし。** 英語圏では漆喰の話は必ずこの語に集約される。ArchiWest "undermining the building's 'breathability'" / "flexibility for seasonal movement … and breathability so that any moisture … can escape and dry out"。Natalie Walton "a highly breathable material, which means it allows moisture to escape from your walls"。**主張は既に書いてあるのに、読み手が知っている見出し語だけがない** |
+| 漆喰の環境性能 | — | **absorbs carbon dioxide as it cures** | ? | 両社とも言及。ArchiWest "the lime reabsorbs CO2 during its application and throughout the drying process"。現状サイトでは未主張 |
+| ひび割れにくさ | — | **allows for movement** | ? | Natalie Walton "highly resistant to cracking … allows for movement with your home's natural settling process" |
 | 無垢材 | solid timber（97件） | **solid timber** | ✓ | |
-| 造作家具 | built-in joinery（5件） | **bespoke joinery** | ✗ | **英国の標準は bespoke joinery。** built-in は米語寄りで、かつ「作り付け」という位置の説明にしかならない |
+| 造作家具 | built-in joinery（5件） | **bespoke joinery** | ✗ | McLaren Excell は社名の隣に掲げている — "Architecture & Bespoke Interiors"。**bespoke は現状0件** |
 | 建具 | timber joinery | **timber joinery** | ✓ | |
-| 左官職人 | plasterer（23件） | **plasterer** | ✓ | |
-| 職人（総称） | craftsmen（1件） | **makers** / craftspeople | △ | craftsmen は性別を含む。英国の事務所は makers を使う |
-| — | — | ~~artisan~~ | ✗ | 英国の設計事務所はまず使わない。現状0件、維持 |
+| 左官職人 | skilled plasterer（23件） | **skilled plasterer** | ✓ | Natalie Walton も "a skilled tradesperson" と同じ組み立て |
+| 職人（総称） | craftsmen（1件） | **tradespeople** / makers | △ | craftsmen は性別を含む。Natalie Walton は tradesperson |
+| 仕事の質 | finely made（5件） | **finely crafted** も可 | △ | McLaren Excell "well-crafted and conceptually clear" / "beautifully conceived and finely crafted" |
+| — | — | ~~artisan~~ | ✗ | 読んだ3社とも不使用。現状0件、維持 |
 | 床材 | flooring（55件） | **flooring** | ✓ | |
+
+**Natalie Walton の語り口は真似しない。** オーストラリアの事務所で、綴りが混在し（favourite と labor）、価格も
+平方フィート表示。語彙は使えるが、レジスターは英国式ではない。
+
+**ArchiWest の語彙は大半が対象外。** lath、wattle & daub、period property、Listed Building は英国の
+古民家の話で、東京のマンションには出てこない。使えるのは breathability と moisture の筋だけ。
 
 ---
 
@@ -92,6 +104,7 @@ dream home        同上
 | 作業 | 件数 | 優先 |
 |---|---|---|
 | `unit bath` → `prefabricated bathroom` | 10 | **高**（通じない） |
+| `breathable` を漆喰の説明に足す | 現状0件 | **高**（主張はあるのに見出し語がない） |
 | `built-in joinery` → `bespoke joinery` | 5 | 中 |
 | `shikkui` の露出を増やす | 465件中2件のみ | 中 |
 | `title` を60字以内に | 81 / 102 | 高（検索結果で切れる） |
@@ -114,6 +127,15 @@ dream home        同上
 - RIBA Journal、Architecture for London — Islington House
 - weblio「unit bath は和製英語」、TOTO 社史（prefabricated bathroom）
 
-英国の設計事務所3社（Jonathan Tuckey Design / McLaren Excell / Retrouvius）は、この環境の
-ネットワーク制限で直接読めていない。B系統の語彙は建築メディア経由の確認にとどまる。
-直接読むには環境のネットワーク設定にホストの追加が要る。
+直接読んだページ（B系統）:
+
+- ArchiWest（英国・歴史的建造物専門の設計事務所）— Lime Plaster: a quick guide for building owners
+  `https://www.archiwest.co.uk/post/lime-plaster-guide`
+- Natalie Walton（豪・インテリア）— Design Notes: Lime Plaster, The Pros & Cons
+  `https://www.nataliewalton.com/notebook/designnotes/limeplaster`
+- McLaren.Excell（ロンドン）— Architecture & Bespoke Interiors
+  `https://mclarenexcell.com/`
+- Retrouvius（ロンドン・サルベージ）— `https://www.retrouvius.com/`
+
+Jonathan Tuckey Design だけは読めていない（`jonathantuckey.com` が `tuckeydesign.com` へ転送され、
+転送先がネットワーク許可の外）。必要なら許可に足せば読める。
